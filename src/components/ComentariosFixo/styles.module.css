@@ -1,0 +1,48 @@
+.comentarios {
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.comentarioCaixa {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.comentarioFoto {
+  width: 62px;
+  height: 60px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.comentario {
+  background: #181828;
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  width: 810px;
+  height: 120px;
+}
+
+.comentarioTexto {
+  margin-top: 20px;
+  color: #fff;
+  padding-left: 10px;
+}
+
+.comentarioNome {
+  font-weight: bold;
+  color: #fff;
+  font-size: 14px;
+  margin-top: 20px;
+  margin-left: 15px;
+}
+
+.comentarioData {
+  color: #999999;
+  font-size: 12px;
+  margin-left: 15px;
+}
