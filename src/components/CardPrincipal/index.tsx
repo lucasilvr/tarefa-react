@@ -7,10 +7,10 @@ export default function CardPrincipal() {
     <>
       <div className={styles.cardPrincipal}>
         <div className={styles.parteCima}>
-          <img src={foto1} alt="foto de codigo" />
+          <img src={foto1} />
         </div>
         <div>
-          <img src={foto2} alt="foto de perfil" className={styles.circle} />
+          <img src={foto2} className={styles.circle} />
         </div>
         <div className={styles.parteBaixo}>
           <h2>Lucas Silveira</h2>

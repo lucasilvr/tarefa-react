@@ -15,11 +15,7 @@ export default function Card({ fotoPerfil, nome, cargo, texto }: CardProps) {
     <div className={styles.container}>
       <div className={styles.informacoes}>
         <div className={styles.info1}>
-          <img
-            src={fotoPerfil}
-            alt={`Foto de perfil de ${nome}`}
-            className={styles.circle}
-          />
+          <img src={fotoPerfil} className={styles.circle} />
           <div>
             <h2>{nome}</h2>
             <h3>{cargo}</h3>

@@ -34,14 +34,26 @@
 .inputComentario {
   align-items: flex-start;
   padding-left: 10px;
-  background-color: #DDDDDD;
+  background-color: #dddddd;
 }
 
 .comentarios {
   margin-top: 30px;
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 20px;
+}
+
+.comentarioHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.comentarioBloco {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
 }
 
 .comentarioCaixa {
@@ -63,20 +75,25 @@
   display: flex;
   flex-direction: column;
   width: 810px;
-  height: 120px;
+  padding: 20px 0 10px 0;
+  box-sizing: border-box;
+}
+
+.likeArea {
+  margin-top: 8px;
+  padding-left: 77px;
 }
 
 .comentarioTexto {
-  margin-top: 20px;
+  margin-top: 10px;
   color: #fff;
-  padding-left: 10px;
+  padding-left: 15px;
 }
 
 .comentarioNome {
   font-weight: bold;
   color: #fff;
   font-size: 14px;
-  margin-top: 20px;
   margin-left: 15px;
 }
 

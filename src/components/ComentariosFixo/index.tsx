@@ -1,62 +1,69 @@
+import { useState } from "react";
 import styles from "./styles.module.css";
-  
-// Importe as fotos dos comentaristas fixos
-import fotoComentarista1 from "../../assets/felyppe.jpg"
-import fotoComentarista2 from "../../assets/mellany.jpg"
-import fotoComentarista3 from "../../assets/jessy.jpg"
-
-
+import foto1 from "../../assets/felyppe.jpg";
+import foto2 from "../../assets/mellany.jpg";
+import foto3 from "../../assets/jessy.jpg";
+import BotaoLike from "../BotaoLike";
+import BotaoExcluir from "../BotaoExcluir"; 
 
 export default function ComentariosFixo() {
+  const [comentarios, setComentarios] = useState([
+    {
+      id: 1,
+      nome: "Felyppe Nunes",
+      foto: foto1,
+      data: "Cerca de 2h",
+      texto: "Est aspernatur quis eos natus dicta et internos",
+    },
+    {
+      id: 2,
+      nome: "Mellany Carter",
+      foto: foto2,
+      data: "Cerca de 2h",
+      texto: "Est aspernatur quis eos natus dicta et internos",
+    },
+    {
+      id: 3,
+      nome: "Jessy Logan",
+      foto: foto3,
+      data: "Cerca de 2h",
+      texto: "Est aspernatur quis eos natus dicta et internos",
+    },
+  ]);
+
+  function removerComentario(id: number) {
+    setComentarios((anteriores) =>
+      anteriores.filter((comentario) => comentario.id !== id)
+    );
+  }
+
   return (
-    
     <div className={styles.comentarios}>
-      
-      
-      <div className={styles.comentarioCaixa}>
-        <img
-          src={fotoComentarista1}
-          className={styles.comentarioFoto}
-        />
-        <div className={styles.comentario}>
-          <span className={styles.comentarioNome}>Felyppe Nunes</span>
-          <p className={styles.comentarioData}>Cerca de 2h</p>
-          <p className={styles.comentarioTexto}>
-            Est aspernatur quis eos natus dicta et internos
-          </p>
-        </div>
-      </div>
+      {comentarios.map((comentario) => (
+        <div key={comentario.id} className={styles.comentarioBloco}>
+          <div className={styles.comentarioCaixa}>
+            <img src={comentario.foto} className={styles.comentarioFoto} />
+            <div className={styles.comentario}>
+              <div className={styles.comentarioHeader}>
+                <div>
+                  <span className={styles.comentarioNome}>
+                    {comentario.nome}
+                  </span>
+                  <p className={styles.comentarioData}>{comentario.data}</p>
+                </div>
 
-      
-      <div className={styles.comentarioCaixa}>
-        <img
-          src={fotoComentarista2}
-          className={styles.comentarioFoto}
-        />
-        <div className={styles.comentario}>
-          <span className={styles.comentarioNome}>Mellany Carter</span>
-          <p className={styles.comentarioData}>Cerca de 2h</p>
-          <p className={styles.comentarioTexto}>
-            Est aspernatur quis eos natus dicta et internos
-          </p>
+                <BotaoExcluir
+                  onDelete={() => removerComentario(comentario.id)}
+                />
+              </div>
+              <p className={styles.comentarioTexto}>{comentario.texto}</p>
+            </div>
+          </div>
+          <div className={styles.likeArea}>
+            <BotaoLike />
+          </div>
         </div>
-      </div>
-      
-        <div className={styles.comentarioCaixa}>
-        <img
-          src={fotoComentarista3}
-          className={styles.comentarioFoto}
-        />
-        <div className={styles.comentario}>
-          <span className={styles.comentarioNome}>Jessy Logan</span>
-          <p className={styles.comentarioData}>Cerca de 2h</p>
-          <p className={styles.comentarioTexto}>
-            Est aspernatur quis eos natus dicta et internos
-
-          </p>
-        </div>
-      </div>
-
+      ))}
     </div>
   );
 }

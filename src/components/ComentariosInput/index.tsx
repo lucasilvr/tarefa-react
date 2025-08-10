@@ -1,23 +1,40 @@
 import { useState } from "react";
 import styles from "./styles.module.css";
-import minhaFoto from "../../assets/lucas.jpg";
+import foto from "../../assets/lucas.jpg";
+import BotaoLike from "../BotaoLike";
+import BotaoExcluir from "../BotaoExcluir";
+
+interface Comentario {
+  id: number;
+  texto: string;
+}
 
 export default function ComentariosInput() {
   const [comentario, setComentario] = useState("");
-  const [comentarios, setComentarios] = useState<string[]>([]);
+  const [comentarios, setComentarios] = useState<Comentario[]>([]);
 
-  function handleSubmit(e: React.FormEvent) {
+  function envio(e: React.FormEvent) {
     e.preventDefault();
     if (comentario.trim() === "") {
       return;
     }
-    setComentarios((anteriores) => [...anteriores, comentario]);
+    const novoComentario = {
+      id: Date.now(),
+      texto: comentario,
+    };
+    setComentarios((anteriores) => [...anteriores, novoComentario]);
     setComentario("");
+  }
+
+  function removerComentario(id: number) {
+    setComentarios((anteriores) =>
+      anteriores.filter((comentario) => comentario.id !== id)
+    );
   }
 
   return (
     <>
-      <form onSubmit={handleSubmit} className={styles.comentarioBox}>
+      <form onSubmit={envio} className={styles.comentarioBox}>
         <p className={styles.comentariosTitulo}>Deixe seu Feedback</p>
         <input
           type="text"
@@ -32,20 +49,29 @@ export default function ComentariosInput() {
       </form>
 
       <div className={styles.comentarios}>
-        {comentarios.map((c, i) => (
-          <div key={i} className={styles.comentarioCaixa}>
-            <img
-              src={minhaFoto}
-              alt="minha foto"
-              className={styles.comentarioFoto}
-            />
-            <div className={styles.comentario}>
-              <span className={styles.comentarioNome}>Lucas Silveira</span>
-              <p className={styles.comentarioData}>há 1 minuto</p>
-              <p className={styles.comentarioTexto}>{c}</p>
+        {comentarios.map((comentario) => (
+          <div key={comentario.id} className={styles.comentarioBloco}>
+            <div className={styles.comentarioCaixa}>
+              <img src={foto} className={styles.comentarioFoto} />
+              <div className={styles.comentario}>
+                <div className={styles.comentarioHeader}>
+                  <div>
+                    <span className={styles.comentarioNome}>
+                      Lucas Silveira
+                    </span>
+                    <p className={styles.comentarioData}>agora mesmo</p>
+                  </div>
+                  <BotaoExcluir
+                    onDelete={() => removerComentario(comentario.id)}
+                  />
+                </div>
+                <p className={styles.comentarioTexto}>{comentario.texto}</p>
+              </div>
+            </div>
+            <div className={styles.likeArea}>
+              <BotaoLike />
             </div>
           </div>
-          
         ))}
       </div>
     </>
