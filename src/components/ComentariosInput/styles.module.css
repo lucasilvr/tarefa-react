@@ -32,9 +32,15 @@
 }
 
 .inputComentario {
-  align-items: flex-start;
   padding-left: 10px;
   background-color: #dddddd;
+  padding-top: 8px;
+}
+
+.inputComentario::placeholder {
+  position: absolute;
+  top: 15px;
+  font-size: 16px;
 }
 
 .comentarios {
@@ -75,7 +81,7 @@
   display: flex;
   flex-direction: column;
   width: 810px;
-  padding: 20px 0 10px 0;
+  padding: 10px 0 15px 0;
   box-sizing: border-box;
 }
 
@@ -95,10 +101,12 @@
   color: #fff;
   font-size: 14px;
   margin-left: 15px;
+  
 }
 
 .comentarioData {
   color: #999999;
-  font-size: 12px;
+  font-size: 14px;
   margin-left: 15px;
+  margin-top: 5px;
 }
