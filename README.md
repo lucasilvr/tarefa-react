@@ -1,3 +1,4 @@
-Tarefa de React
-#obs: não esquece de instalar as dependências (npm install)
+Tarefa de React<br>
+obs: não esquece de instalar as dependências (npm install)
+
 
